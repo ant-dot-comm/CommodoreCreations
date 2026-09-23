@@ -1,20 +1,5 @@
 @import "tailwindcss";
-
-@theme {
-  --color-evergreen-50: #f1f7f3;
-  --color-evergreen-100: #dcebe1;
-  --color-evergreen-700: #1f5a3a;
-  --color-evergreen-900: #0f2e1f;
-  --color-cranberry-500: #b3263a;
-  --color-cranberry-600: #961d30;
-  --color-gold-300: #e8cf8a;
-  --color-gold-500: #c9a24a;
-  --color-cream: #fbf8f1;
-
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-fraunces);
-}
-
-body {
-  @apply bg-cream text-evergreen-900 font-sans;
-}
+@import "../styles/tokens.css";
+@import "../styles/typography.css";
+@import "../styles/effects.css";
+@import "../styles/base.css";

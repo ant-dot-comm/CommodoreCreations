@@ -1,0 +1,224 @@
+/*
+ * Commodore Creations design tokens.
+ *
+ * Two layers:
+ *   1. Primitives (:root)  — raw brand values. Never referenced by components.
+ *   2. Semantic (@theme)   — roles mapped onto primitives. These generate the
+ *                            Tailwind utilities components use.
+ *
+ * Semantic colors are scoped per property so class names read as roles:
+ *   bg-primary · bg-inverse · text-muted · text-accent · border-subtle
+ * Cross-property roles (decorative marks, focus) live under --color-*.
+ */
+
+:root {
+  /* Commodore navy */
+  --navy-100: #dbe1ec;
+  --navy-200: #b7c2d6;
+  --navy-400: #64779b;
+  --navy-700: #263654;
+  --navy-900: #152036;
+  --navy-950: #0d1524;
+
+  /* Warm ivory */
+  --ivory-50: #fcfaf6;
+  --ivory-100: #f8f4ee;
+  --ivory-200: #f1eae0;
+  --ivory-300: #e6dccf;
+  --ivory-400: #d3c6b5;
+  --ivory-500: #b3a592;
+  --ivory-600: #8e8171;
+  --ivory-700: #6c6154;
+  --ivory-800: #4d453c;
+  --linen: #efe7db;
+
+  /* Champagne gold */
+  --gold-100: #f3ead8;
+  --gold-200: #e7d6b5;
+  --gold-300: #d8bf90;
+  --gold-400: #c8a874;
+  --gold-500: #b8925a;
+  --gold-600: #9c7a48;
+  --gold-700: #7e623a;
+
+  /* Status — muted and residential */
+  --moss-600: #4f6446;
+  --garnet-600: #9a3b33;
+
+  /* Motion — collapsed under reduced motion in base.css */
+  --duration-fast: 240ms;
+  --duration-base: 420ms;
+  --duration-slow: 800ms;
+  --duration-reveal: 1200ms;
+}
+
+@theme {
+  /* Remove Tailwind's default palettes so only brand tokens exist. */
+  --color-*: initial;
+  --font-*: initial;
+  --text-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --ease-*: initial;
+  --container-*: initial;
+
+  /* ── Backgrounds ─────────────────────────────────────────────── */
+  --background-color-primary: var(--ivory-100);
+  --background-color-secondary: var(--linen);
+  --background-color-tertiary: var(--ivory-50);
+  --background-color-inverse: var(--navy-900);
+  --background-color-deep: var(--navy-950);
+  --background-color-placeholder: var(--ivory-300);
+
+  --background-color-action-primary: var(--gold-500);
+  --background-color-action-primary-hover: var(--gold-400);
+  --background-color-action-primary-active: var(--gold-600);
+  --background-color-action-secondary: var(--navy-900);
+  --background-color-action-secondary-hover: var(--navy-700);
+  --background-color-action-secondary-active: var(--navy-950);
+  --background-color-action-disabled: var(--ivory-300);
+
+  /* ── Text ────────────────────────────────────────────────────── */
+  --text-color-primary: var(--navy-900);
+  --text-color-secondary: var(--ivory-800);
+  --text-color-muted: var(--ivory-700);
+  --text-color-inverse: var(--ivory-100);
+  --text-color-inverse-muted: var(--navy-200);
+  --text-color-accent: var(--gold-700); /* AA on ivory */
+  --text-color-accent-inverse: var(--gold-400); /* AA on navy */
+  --text-color-on-action-primary: var(--navy-950);
+  --text-color-on-action-secondary: var(--ivory-100);
+  --text-color-disabled: var(--ivory-600);
+  --text-color-error: var(--garnet-600);
+  --text-color-success: var(--moss-600);
+
+  /* ── Borders ─────────────────────────────────────────────────── */
+  --border-color-subtle: var(--ivory-300);
+  --border-color-default: var(--ivory-500);
+  --border-color-hover: var(--navy-400);
+  --border-color-strong: var(--navy-900);
+  --border-color-accent: var(--gold-500);
+  --border-color-accent-soft: var(--gold-300);
+  --border-color-accent-inverse: var(--gold-400);
+  --border-color-inverse: rgb(246 241 234 / 0.22);
+  --border-color-frame: var(--ivory-50);
+  --border-color-disabled: var(--ivory-400);
+  --border-color-error: var(--garnet-600);
+
+  /* ── Cross-property roles ────────────────────────────────────── */
+  --color-ornament: var(--gold-500);
+  --color-ornament-soft: var(--gold-300);
+  --color-ornament-inverse: var(--gold-400);
+  --color-scrim: var(--navy-950); /* image overlays, used with gradient stops */
+  --outline-color-focus: var(--navy-700);
+  --outline-color-focus-inverse: var(--gold-300);
+
+  /* ── Type families (next/font variables are set in app/layout) ─ */
+  --font-display: var(--font-noto-serif-display), Georgia, serif;
+  --font-sans: var(--font-jost), "Helvetica Neue", Arial, sans-serif;
+  --font-script: var(--font-mrs-saint-delafield), "Snell Roundhand", cursive;
+
+  /* ── Type scale — fluid 375px → 1440px ───────────────────────── */
+  --text-display-xl: clamp(3.5rem, 2.39rem + 4.75vw, 8.5rem);
+  --text-display-xl--line-height: 0.96;
+  --text-display-xl--letter-spacing: -0.02em;
+  --text-display-l: clamp(3rem, 2.23rem + 3.29vw, 6.5rem);
+  --text-display-l--line-height: 0.96;
+  --text-display-l--letter-spacing: -0.02em;
+  --text-display-m: clamp(2.5rem, 2.03rem + 2vw, 4.75rem);
+  --text-display-m--line-height: 1;
+  --text-display-m--letter-spacing: -0.02em;
+  --text-h1: clamp(2.25rem, 1.86rem + 1.64vw, 4rem);
+  --text-h1--line-height: 1.04;
+  --text-h1--letter-spacing: -0.01em;
+  --text-h2: clamp(1.875rem, 1.62rem + 1.1vw, 3rem);
+  --text-h2--line-height: 1.1;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h3: clamp(1.5rem, 1.36rem + 0.59vw, 2.125rem);
+  --text-h3--line-height: 1.15;
+  --text-h4: clamp(1.25rem, 1.19rem + 0.23vw, 1.5rem);
+  --text-h4--line-height: 1.2;
+  --text-h5: 1.0625rem;
+  --text-h5--line-height: 1.25;
+  --text-body-lg: 1.1875rem;
+  --text-body-lg--line-height: 1.65;
+  --text-body: 1rem;
+  --text-body--line-height: 1.7;
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.65;
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.5;
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.4;
+  --text-label-sm: 0.6875rem;
+  --text-label-sm--line-height: 1.4;
+  --text-numeral: 1.125rem;
+  --text-numeral--line-height: 1;
+  --text-script: clamp(1.875rem, 1.6rem + 1vw, 2.5rem);
+  --text-script--line-height: 0.95;
+
+  --tracking-nav: 0.02em;
+  --tracking-button: 0.18em;
+  --tracking-label: 0.22em;
+  --tracking-eyebrow: 0.32em;
+
+  /* ── Spacing — Tailwind's 4px scale plus semantic rhythm ─────── */
+  --spacing-gutter: clamp(1.25rem, 4.5vw, 5rem);
+  --spacing-section: clamp(5rem, 6vw + 3.5rem, 10rem);
+  --spacing-section-tight: clamp(3.5rem, 4vw + 2.5rem, 6rem);
+  --spacing-header: 4.5rem;
+  --spacing-header-lg: 6.5rem;
+
+  /* ── Containers & measures ───────────────────────────────────── */
+  --container-wide: 100rem;
+  --container-standard: 80rem;
+  --container-reading: 45rem;
+  --container-narrow: 35rem;
+  --container-measure-title: 18ch;
+  --container-measure-sm: 34ch;
+  --container-measure: 46ch;
+  --container-measure-lg: 62ch;
+
+  /* ── Image ratios ────────────────────────────────────────────── */
+  --aspect-cinema: 21 / 9;
+  --aspect-landscape: 3 / 2;
+  --aspect-classic: 4 / 3;
+  --aspect-portrait: 4 / 5;
+  --aspect-tall: 3 / 4;
+
+  /* ── Shape, depth, layering ──────────────────────────────────── */
+  --radius-xs: 2px;
+  --shadow-xs: 0 1px 2px rgb(21 32 54 / 0.04);
+  --shadow-print: 0 1px 1px rgb(21 32 54 / 0.06), 0 18px 36px -18px rgb(21 32 54 / 0.38);
+  --shadow-photo: 0 28px 48px -28px rgb(21 32 54 / 0.45);
+
+  --z-index-content: 10;
+  --z-index-decorative: 30;
+  --z-index-navigation: 100;
+  --z-index-modal: 300;
+
+  /* ── Motion ──────────────────────────────────────────────────── */
+  --ease-standard: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Breakpoints ─────────────────────────────────────────────── */
+  --breakpoint-nav: 75rem; /* desktop navigation appears at 1200px */
+}
+
+/* Durations resolve through :root so reduced motion can collapse them. */
+@utility duration-fast {
+  --tw-duration: var(--duration-fast);
+  transition-duration: var(--duration-fast);
+}
+@utility duration-base {
+  --tw-duration: var(--duration-base);
+  transition-duration: var(--duration-base);
+}
+@utility duration-slow {
+  --tw-duration: var(--duration-slow);
+  transition-duration: var(--duration-slow);
+}
+@utility duration-reveal {
+  --tw-duration: var(--duration-reveal);
+  transition-duration: var(--duration-reveal);
+}

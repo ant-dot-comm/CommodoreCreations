@@ -1,0 +1,29 @@
+/*
+ * Brand graphic treatments Tailwind has no utilities for.
+ *
+ * Angled cuts follow the design system rule of an 8–14% slant. Each name
+ * describes which edge is cut, so they compose with responsive variants:
+ *   <div class="clip-slant-bottom md:clip-slant-start">
+ */
+
+@utility clip-slant-start {
+  clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%);
+}
+@utility clip-slant-end {
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+}
+@utility clip-slant-end-reverse {
+  clip-path: polygon(0 0, 88% 0, 100% 100%, 0 100%);
+}
+@utility clip-slant-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 88%);
+}
+@utility clip-none {
+  clip-path: none;
+}
+
+/* Flat monogram silhouette, tinted with any bg-* / text color via currentColor. */
+@utility mask-monogram {
+  background-color: currentColor;
+  mask: url("/brand/monogram.svg") center / contain no-repeat;
+}

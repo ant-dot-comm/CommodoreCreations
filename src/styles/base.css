@@ -1,0 +1,39 @@
+@layer base {
+  html {
+    @apply bg-primary text-primary;
+    scroll-padding-top: var(--spacing-header);
+  }
+
+  body {
+    @apply type-body min-h-dvh antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus-ring, var(--outline-color-focus));
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background-color: var(--gold-200);
+    color: var(--navy-950);
+  }
+}
+
+/*
+ * Applied to any region on a dark surface (navy bands, footer, photo overlays).
+ * Sets inverse ink and switches focus rings to the champagne ring for contrast.
+ */
+@utility tone-inverse {
+  @apply text-inverse;
+  --focus-ring: var(--outline-color-focus-inverse);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 1ms;
+    --duration-base: 1ms;
+    --duration-slow: 1ms;
+    --duration-reveal: 1ms;
+  }
+}

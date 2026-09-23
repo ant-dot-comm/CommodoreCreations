@@ -1,0 +1,78 @@
+/*
+ * Typography roles. Components apply one role (type-h2, type-eyebrow, …)
+ * instead of assembling family, size, weight, case and tracking by hand.
+ * Color is never part of a role — pair a role with a text-* color token.
+ */
+
+@utility type-display-xl {
+  @apply font-display text-display-xl font-normal text-balance;
+}
+@utility type-display-l {
+  @apply font-display text-display-l font-normal text-balance;
+}
+@utility type-display-m {
+  @apply font-display text-display-m font-normal text-balance;
+}
+@utility type-h1 {
+  @apply font-display text-h1 font-normal text-balance;
+}
+@utility type-h2 {
+  @apply font-display text-h2 font-normal text-balance;
+}
+@utility type-h3 {
+  @apply font-display text-h3 font-normal text-balance;
+}
+@utility type-h4 {
+  @apply font-display text-h4 font-normal;
+}
+@utility type-h5 {
+  @apply font-display text-h5 font-normal;
+}
+
+/* Editorial lead paragraph set in the display face. */
+@utility type-lede {
+  @apply font-display text-h3 leading-snug font-light text-pretty;
+}
+
+@utility type-body-lg {
+  @apply font-sans text-body-lg font-normal text-pretty;
+}
+@utility type-body {
+  @apply font-sans text-body font-normal text-pretty;
+}
+@utility type-body-sm {
+  @apply font-sans text-body-sm font-normal text-pretty;
+}
+@utility type-caption {
+  @apply font-sans text-caption font-normal;
+}
+
+@utility type-eyebrow {
+  @apply font-sans text-label font-medium tracking-eyebrow uppercase;
+}
+/* Tracked caps couplets, e.g. "Beautiful spaces. Brighter seasons." */
+@utility type-tagline {
+  @apply font-sans text-label-sm leading-loose font-medium tracking-eyebrow uppercase;
+}
+@utility type-label {
+  @apply font-sans text-label font-medium tracking-label uppercase;
+}
+@utility type-label-sm {
+  @apply font-sans text-label-sm font-medium tracking-label uppercase;
+}
+@utility type-button {
+  @apply font-sans text-label leading-none font-medium tracking-button uppercase;
+}
+@utility type-nav {
+  @apply font-sans text-body-sm tracking-nav;
+}
+
+/* Italic serif numerals ("01", "02"). Size with a text-* scale token. */
+@utility type-numeral {
+  @apply font-display font-light italic;
+}
+
+/* Handwritten annotations. Always decorative. Size with text-script or a heading size. */
+@utility type-script {
+  @apply font-script leading-none font-normal;
+}

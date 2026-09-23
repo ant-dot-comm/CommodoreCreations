@@ -1,30 +1,56 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Jost, Mrs_Saint_Delafield, Noto_Serif_Display } from "next/font/google";
+
+import { SiteFooter } from "@/components/layout/SiteFooter/SiteFooter";
+import { SiteHeader } from "@/components/layout/SiteHeader/SiteHeader";
+import { site } from "@/content/site";
+
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const display = Noto_Serif_Display({
+  variable: "--font-noto-serif-display",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+});
+
+const sans = Jost({
+  variable: "--font-jost",
   subsets: ["latin"],
 });
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const script = Mrs_Saint_Delafield({
+  variable: "--font-mrs-saint-delafield",
   subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
-  title: "Commodore Creations | In-Home Holiday Decor Design & Setup",
-  description:
-    "Commodore Creations designs, installs, and takes down beautiful holiday decor in your home — so you can simply enjoy the season.",
+  title: {
+    default: `${site.name} | In-Home Holiday Decor Design & Setup`,
+    template: `%s | ${site.name}`,
+  },
+  description: site.description,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${display.variable} ${sans.variable} ${script.variable} has-[dialog[open]]:overflow-hidden`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex flex-col">
+        <a
+          href="#main"
+          className="sr-only z-modal bg-inverse px-5 py-3 type-label tone-inverse focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+        >
+          Skip to content
+        </a>
+        <SiteHeader />
+        <main id="main" className="flex-1">
+          {children}
+        </main>
+        <SiteFooter />
+      </body>
     </html>
   );
 }
